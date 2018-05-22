@@ -1,0 +1,22 @@
+vnote_backup_file_826537664 D:/Documents/vnote_notebooks/zyqvnote/同花顺爱基金/个人文档-收益.md
+#### 个人文档-收益
+###### **钱包申购当天有收益吗**  
+需要下一天基金公司确认，因此无收益。钱包的好处只是申购的那天和下一天可以快速赎回  
+###### **累计收益=份额表累计收益+收益增长，之前累计收益已经计算出来了吗**  
+###### **只有货币基金有未付收益吗**
+是的，权益类基金理论上没有未付收益；但在t_share_income中存在
+###### **持仓收益如何算的**
+由holdshare-nd_change得出
+#### 用户持仓单个基金的收益
+```
+     * 1.从ssdb_clientshare中获取客户份额列表，确定持仓开始日期 
+     * 2.从ssdb_parm_workday中获取当前净值最大工作日 
+     * 3.对比ssdb_fund33_newest确定最新净值日期 
+     * 4.从ssdb_fund33中获取持仓以来的净值日期列表，用于分页 
+     * 5.从ssdb_fund33表要获取当前分页数据列表 
+     * 6.从fund34中获取万份收益及七日年化收益 
+     * 7.从ssdb_parm_workday中获取指定日期是否工作信息 
+```
+##### ETL触发器
+如果fund33表insert，则往fund33_tri_test中插入new数据  
+如果fund33表update,则往fund33_tri_test中插入所有数据

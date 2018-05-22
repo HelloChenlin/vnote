@@ -1,0 +1,62 @@
+vnote_backup_file_826537664 E:/study/Vnote/zyqvnote/同花顺爱基金/解绑/记录.md
+#### 接口
+###### RsBindService  同花顺绑定接口  
+绑定接口:`rs/bind/app/dobind/{userid}/result`        `fund_bind_add`  
+参数:  
+    userid 爱基金客户号  
+    pwd 爱基金密码  
+    RsBindDTO:  
+            user : 同花顺登录后获取的信息  
+            ticket: 同花顺登录后获取的信息  
+            thsId: 同花顺客户号  
+     key1-key5  
+     
+查询是否绑定：`rs/bind/app/checkbind/{userid}/result`   ` fund_bind_check `   
+参数：  
+    userid:爱基金客户号  
+    RsBindDTO:  
+        thsId:同花顺客户号  
+    key1-key5
+
+查询是否绑定，私钥签名对比：`rs/bind/app/checkbindwithsign/result`     `fund_bind_check`  
+参数：  
+    RsBindDTO:  
+    sign:  
+            custId: 爱基金客户号  
+            thsId:同花顺客户号  
+
+社区查询用户同花顺信息 :`rs/bind/app/querybind/{userid}/result`      `fund_query_userinfo`  
+参数：  
+        userid  爱基金客户号  
+
+社区查询用户同花顺信息带密码：`rs/bind/app/querybindpwd/{userid}/result`  `fund_query_userinfo`   
+`http://172.20.200.103:81/verify?reqtype=fund_query_userinfo&fund=100104309008¬check=1 `   
+参数:  
+        GET方式  
+        userid 爱基金客户号  
+        pwd:爱基金密码   
+        
+```
+<fund_query_userinfo>
+<ret code="0" msg="查询成功"/>
+<item account="太行山高01" userid="436186640" sessionid="460f3a553e31473ae72c641c0f061ce77"/>
+</fund_query_userinfo>
+```
+
+取消绑定接口   `rs/bind/app/removebind/result`  
+参数  
+        custId  爱基金客户号  
+
+#### RsBindThsService
+第三方查询爱基金信息：`rs/bind/ths/queryinfo/{userid}/result` 
+参数： GET方式  
+         userid : 爱基金账户  
+         token : 绑定成功后token  
+
+
+#### 记录
+notcheck=1 不检查白名单
+
+
+
+

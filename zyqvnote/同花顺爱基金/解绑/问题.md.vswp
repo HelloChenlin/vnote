@@ -1,0 +1,3 @@
+vnote_backup_file_826537664 E:/study/Vnote/zyqvnote/同花顺爱基金/解绑/问题.md
+1. 解绑之后，需要删除客户端cookie和php   cookie
+2. 解绑之后绑定不上了？客户端有cookie,登录成功之后又一套cookie
