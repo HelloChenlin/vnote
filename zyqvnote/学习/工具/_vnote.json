@@ -23,6 +23,18 @@
         },
         {
             "name": "Idea"
+        },
+        {
+            "name": "Apache"
+        },
+        {
+            "name": "Eclipse"
+        },
+        {
+            "name": "Storm"
+        },
+        {
+            "name": "zookeeper"
         }
     ],
     "version": "1"
