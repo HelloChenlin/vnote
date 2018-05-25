@@ -25,13 +25,16 @@
             "name": "Idea"
         },
         {
-            "name": "zookeeper"
+            "name": "Apache"
+        },
+        {
+            "name": "Eclipse"
         },
         {
             "name": "Storm"
         },
         {
-            "name": "Eclipse"
+            "name": "zookeeper"
         }
     ],
     "version": "1"
