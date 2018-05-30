@@ -1,3 +1,4 @@
+vnote_backup_file_826537664 E:/study/Vnote/vnote/zyqvnote/学习/工具/Maven/问题.md
 ```
 1：在pom写对的情况下如果还是不能导入，可能是本地仓库已经存在了，可先在本地仓库将对应的删掉，然后更新项目。
 ```

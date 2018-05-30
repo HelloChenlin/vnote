@@ -1,3 +1,4 @@
+vnote_backup_file_826537664 E:/study/Vnote/vnote/zyqvnote/学习/Linux/记录.md
 #### 查看进程号和监听的pid
 `1. root用户执行netstat -ntupl n表示不查询dns t表示tcp协议 u表示udp协议 p表示查询占用的程序 l表示查询正在监听的程序
 `

@@ -6,3 +6,4 @@ vnote_backup_file_826537664 E:/study/Vnote/vnote/zyqvnote/学习/工具/Storm/�
 [storm中declareOutputFields及与fieldsGrouping](https://blog.csdn.net/qq_32440951/article/details/80414072)  
 [Field Grouping和Shuffle Grouping的区别](https://blog.csdn.net/luonanqin/article/details/40436397)  
 [storm源码之理解Storm中Worker、Executor、Task关系 + 并发度详解](https://www.cnblogs.com/xymqx/p/4374909.html)  
+[jstorm fieldGrouping深入理解](https://blog.csdn.net/wangshijie1234567/article/details/48315605)  
