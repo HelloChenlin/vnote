@@ -29,6 +29,9 @@
     "sub_directories": [
         {
             "name": "Django"
+        },
+        {
+            "name": "python学习路线"
         }
     ],
     "version": "1"
