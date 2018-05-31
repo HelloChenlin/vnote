@@ -1,0 +1,72 @@
+vnote_backup_file_826537664 E:/study/Vnote/vnote/zyqvnote/学习/工具/Storm/记录.md
+#### Grouping策略
+##### shuffleGrouping
+spot 1 ,executor 1,task 1  
+bolt 1,executor 1,task 1  
+
+```
+tuple0->aa  bolt1:1-BoltExecutors
+tuple0->bb  bolt1:1-BoltExecutors
+tuple0->cc  bolt1:1-BoltExecutors
+tuple0->aa  bolt1:1-BoltExecutors
+tuple0->bb  bolt1:1-BoltExecutors
+tuple0->bb  bolt1:1-BoltExecutors
+tuple0->bb  bolt1:1-BoltExecutors
+tuple0->cc  bolt1:1-BoltExecutors
+tuple0->dd  bolt1:1-BoltExecutors
+tuple0->  bolt1:1-BoltExecutors
+tuple0->jj  bolt1:1-BoltExecutors
+tuple0->mm  bolt1:1-BoltExecutors
+```
+
+spot 1 ,executor 1,task 1  
+bolt 1 ,executor 2,task 2 
+```
+tuple0->aa  bolt1:2-BoltExecutors
+tuple0->bb  bolt1:1-BoltExecutors
+tuple0->cc  bolt1:2-BoltExecutors
+tuple0->aa  bolt1:1-BoltExecutors
+tuple0->bb  bolt1:2-BoltExecutors
+tuple0->bb  bolt1:1-BoltExecutors
+tuple0->bb  bolt1:1-BoltExecutors
+tuple0->cc  bolt1:2-BoltExecutors
+tuple0->dd  bolt1:1-BoltExecutors
+tuple0->  bolt1:2-BoltExecutors
+tuple0->jj  bolt1:1-BoltExecutors
+tuple0->mm  bolt1:2-BoltExecutors
+结论：随机选择一个executor
+```
+
+spot 1 ,executor 1,task 1  
+bolt  1 ,executor 1,task 1  
+bolt  1 ,executor 1,task 1   
+```
+tuple0->aa  bolt2:1-BoltExecutors
+tuple0->aa  bolt1:2-BoltExecutors
+tuple0->bb  bolt2:1-BoltExecutors
+tuple0->bb  bolt1:2-BoltExecutors
+tuple0->cc  bolt2:1-BoltExecutors
+tuple0->cc  bolt1:2-BoltExecutors
+tuple0->aa  bolt2:1-BoltExecutors
+tuple0->aa  bolt1:2-BoltExecutors
+tuple0->bb  bolt2:1-BoltExecutors
+tuple0->bb  bolt1:2-BoltExecutors
+tuple0->bb  bolt2:1-BoltExecutors
+tuple0->bb  bolt1:2-BoltExecutors
+结论：每个bolt都会接受spot
+```
+spot 1 ,executor 1,task 1  
+spot 1 ,executor 1,task 1  
+bolt  1 ,executor 1,task 1  
+```
+tuple0->aa  bolt1:1-BoltExecutors
+tuple0->aa  bolt1:2-BoltExecutors
+tuple0->bb  bolt1:1-BoltExecutors
+tuple0->bb  bolt1:2-BoltExecutors
+结论：1个bolt会接受多个spot
+```
+
+##### fieldGrouping
+要求：在declared的方法中定义  
+spot 1 ,executor 1,task 1  
+bolt  1 ,executor 1,task 1  
