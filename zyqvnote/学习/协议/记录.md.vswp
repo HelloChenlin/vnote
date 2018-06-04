@@ -1,3 +1,4 @@
+vnote_backup_file_826537664 E:/study/Vnote/vnote/zyqvnote/学习/协议/记录.md
 
 ## 为什么Http是无状态的短连接，而TCP是有状态的长连接？Http不是建立在TCP的基础上吗，为什么还能是短连接？
 ```
