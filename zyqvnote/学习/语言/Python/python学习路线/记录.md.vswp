@@ -52,7 +52,7 @@ u'\u4e2d'
     输入中文后转化的是utf-8编码的字节, pycharm也是utf-8。
 
 ## Python3
-1. python3字符串默认编码是utf-8。
+1. python3字符串默认是unicde,解释器默认编码是utf-8。
 2. 字符串有两种type，分别为bytes和str,存储格式分别为byte和unicode
 
 ## 编码与程序运行的关系
@@ -71,3 +71,108 @@ u'\u4e2d'
 2. u2=unicode("章御强")   ====u2=unicide("章御强",defaultcharset)  
     这边其实已经调用了python解释器，由于py2解释器是用ascii编码的，所以肯定报错。  
     如何证明:先设定解释器默认编码为gbk,然后将unicode用gbk编码，最后调用上面的unicode方法。  
+
+# Pyhton3数据结构
+## 字符串格式化
+```
+# -*- coding: UTF-8 -*-
+s1=88;
+s2=99;
+print(r)
+msg='%d,%d,%.2f' % (s1,s2,r)
+msg2='{0} {1} {2:.2f}'.format(s1,s2,r)
+print(msg)
+print(msg2)
+```
+
+## list
+1. 从倒数第一个获取   L[-1]
+2. 添加数据  L.addend(4)
+3. 插入数据 L.insert(1,'5')  原理其实是引用指向5这个元素，然后1之后的引用向起点移一位。
+4. list里面的元素的数据类型也可以不同  L = ['Apple', 123, True]
+
+## tuple 
+1. 定义空的元组 t=()
+2. 定义只有一个数为1的元组，t=(1)
+3. 定义只有一个元素的元组  t=(1,)
+4. tuple的指向永远不能变  和java的final一样，引用不能变
+## dict (类似于java的Map)
+1. `d={1:[1,2]}`  
+2.  `d[1]=1`  除了初始化指定值，还可以通过下标设置值
+3.  要删除一个key，用pop(key)方法
+4. dict不能存放不变对象的key,例如list或者tuple里加list。原因是：无法通过hash定位到value。   
+    java中是可以的，但是你得重写equals和hashcode这两个方法。
+
+## set(类似于hashset)
+1. s = set([1, 1, 2, 2, 3, 3])
+2. s = set((1, 1, 2, 2, 3, 3))
+
+## 数据结构原理分析
+### list分析
+1. list内部应该是一个数组，所以能用切片和下标访问，不然速度不可能那么快。
+2. list有insert方法，而java的arraylist没有。 
+   原因：时间复杂度为O(n),在数据量大的情况下效率低。
+### tuple分析
+1. tuple作为不可变对象指：tuple的应用不可变。可能是用了和java final类似的关键字。
+2. tuple的实现应该也是和list类似，也是数组。这就能解释为什么set中可以存放list和tuple
+
+### dict
+1.  dict不能存放不变对象的key,例如list或者tuple里加list?  
+    原因是：无法通过hash定位到value。   
+    java中是可以的，但是你得重写equals和hashcode这两个方法。  
+2. dict是如何处理冲突的？  
+    用了链表法，即数组加链表。从d={1:2,1:4,2:5}，s=set(d)   ,s=>>{1, 3}可以看出，
+
+### set分析
+1. set应该是利用dict即hashtable,从而实现不重复，应该重复的值已经覆盖了。
+
+
+# Python3函数
+## 解释
+1. 函数名其实就是指向一个函数对象的引用，完全可以把函数名赋给一个变量，
+   相当于给这个函数起了一个“别名”：
+## 返回多个值
+```
+def move(x, y, step, angle=0):
+    nx = x + step * math.cos(angle)
+    ny = y - step * math.sin(angle)
+    return nx, ny
+```
+其实是返回一个`tuple`
+## 默认参数
+```
+def power(x, n=2):
+    s = 1
+    while n > 0:
+        n = n - 1
+        s = s * x
+    return s
+```
+1. 必选参数在前，默认参数在后，否则Python的解释器会报错。如果在中间，会导致调用模糊
+2. 如何设置默认参数
+
+## 可变参数
+```
+def calc(*numbers):
+    sum = 0
+    for n in numbers:
+        sum = sum + n * n
+    return sum
+
+调用：
+    calc([1, 2, 3])
+    calc((1, 3, 5, 7))
+    calc(1, 2, 3)
+    nums = [1, 2, 3]   calc(*nums)
+```
+
+## 关键字参数
+```
+def person(name, age, **kw):
+    print('name:', name, 'age:', age, 'other:', kw)
+
+调用：
+    person('Michael', 30)
+    person('Bob', 35, city='Beijing')
+    person('Adam', 45, gender='M', job='Engineer')
+```
