@@ -1,0 +1,30 @@
+vnote_backup_file_826537664 E:/study/Vnote/vnote/zyqvnote/学习/语言/Python/python学习路线/练习题.md
+# 任一个英文的纯文本文件，统计其中的单词出现的个数。
+```
+import re;
+def getNumbers(filePath):
+    with open(filePath,'r') as f:
+        str=f.read()
+        l=re.split('\s+',str)
+    return l
+```
+
+# 生成200个激活码
+```
+def getRandowNum():
+    s=''
+    l=[]
+    for x in range(65,91):
+        l.append(chr(x))
+
+    for x in range(97,123):
+        l.append(chr(x))
+
+    for x in range(10):
+        l.append(x)
+
+    for x in range(16):
+        code=random.choice(l)
+        s=s+str(code)
+    return s
+```
