@@ -32,6 +32,12 @@
         },
         {
             "name": "python学习路线"
+        },
+        {
+            "name": "Scrapy"
+        },
+        {
+            "name": "ImageRealize"
         }
     ],
     "version": "1"
