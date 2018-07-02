@@ -20,6 +20,9 @@
         },
         {
             "name": "Servlet"
+        },
+        {
+            "name": "shiro"
         }
     ],
     "version": "1"
