@@ -1,0 +1,12 @@
+vnote_backup_file_826537664 D:/project/myproject/vnote/zyqvnote/学习/框架/shiro/记录.md
+# 记录
+shiro `rememberme`指的是对于/student=user的接口是可以直接过的，而对于`authc`的依旧需要验证的
+```
+[urls]
+/login=anon  
+/admin*=authc
+/student=user
+/teacher=perms["user:create"]
+```
+
+自定义realm只是对于配置文件，转而去数据库读取并且赋予角色和权限

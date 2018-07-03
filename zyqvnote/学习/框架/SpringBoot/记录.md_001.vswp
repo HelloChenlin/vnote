@@ -1,5 +1,0 @@
-vnote_backup_file_826537664 D:/project/myproject/vnote/zyqvnote/学习/框架/SpringBoot/记录.md
-### springboot配置多环境
-application.properties  `spring.profiles.active=${environment}`  
-其他命名为：`application-dev.properties`  
-命令行启动：`java -jar xxx.jar --spring.profiles.active=test`  
