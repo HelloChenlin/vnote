@@ -1,0 +1,17 @@
+vnote_backup_file_826537664 D:/project/myproject/vnote/zyqvnote/51公积金/数据库表记录.md
+# 数据库表记录
+## 首页分类表 `gjj_borrow_classification`   
+```
+SELECT  id,name,sort,base_annualized_rate,additional_rate,borrow_limit,related_asset_classes,marketing_copy,remark,status,add_time,update_time
+from gjj_borrow_classification
+where status = 1
+order by sort
+```
+
+![](_v_images/_1530693088_22580.png)
+
+## 用户银行表 `rd_account_bank`
+`select * from rd_account_bank  where rd_account_bank.user_id='32880'`  
+![](_v_images/_1530859671_26185.png)
+
+rd_user_tag.type删掉

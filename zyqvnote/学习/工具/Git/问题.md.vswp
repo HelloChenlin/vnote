@@ -1,0 +1,4 @@
+vnote_backup_file_826537664 D:/project/myproject/vnote/zyqvnote/学习/工具/Git/问题.md
+# 问题
+问题:从gitlab拉取分支时auth fail，
+解决:控制面板->用户账户->凭据管理进行修改
