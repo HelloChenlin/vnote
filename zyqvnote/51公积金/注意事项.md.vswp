@@ -1,0 +1,5 @@
+vnote_backup_file_826537664 D:/project/myproject/vnote/zyqvnote/51公积金/Git注意事项.md
+# 注意事项
+1. flydb分支文件只能提交不能拉。
+2. 提交分支时候添加名称。
+3. 出了给菜单添加flydb的sql外，还要给权限管理添加Sql
