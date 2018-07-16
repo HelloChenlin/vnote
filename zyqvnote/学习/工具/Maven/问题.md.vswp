@@ -1,3 +1,4 @@
+vnote_backup_file_826537664 /Users/zyq/Documents/Vnote/vnote/zyqvnote/学习/工具/Maven/问题.md
 ```
 1：在pom写对的情况下如果还是不能导入，可能是本地仓库已经存在了，可先在本地仓库将对应的删掉，然后更新项目。
 ```
@@ -17,3 +18,4 @@
 5. `mvn -v`正确，`mvn`错误并报一大串`google`的错误。  
     原因：maven版本为3.5.4，3.2.5就没错
 6. maven下载一直从私服去下载而不是本地仓库。可以先将本地仓库的给删除了。或者先将多模块的子项目给install下
+7. maven
