@@ -35,6 +35,9 @@
         },
         {
             "name": "zookeeper"
+        },
+        {
+            "name": "RocketMQ"
         }
     ],
     "version": "1"
