@@ -49,9 +49,6 @@
         },
         {
             "name": "语言"
-        },
-        {
-            "name": "Tomcat"
         }
     ],
     "version": "1"

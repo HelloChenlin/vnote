@@ -1,0 +1,109 @@
+vnote_backup_file_826537664 D:/project/vnote/zyqvnote/学习/工具/微信公众号/记录.md
+## 组件介绍
+```
+公众号：酒吧公众号
+组件方网站：platform
+公众平台==三方平台=thirdparty
+```
+![](_v_images/1533712188_8387.png)
+## 流程
+### 保存ticket
+```
+1.微信服务器会向指定`url`每隔10分钟定时推送component_verify_ticket。
+2.第三方平台方在收到ticket推送后也需进行解密，接收到后必须直接返回字符串success.
+3.同时保存ticket，用于之后的获取token。
+详见ThirdParty项目的ThirdPartyController类的getComponentVerifyTicket方法
+```
+
+### 获取第三方平台component_access_token
+每个令牌存在有效期（2小时）  
+详见ThirdParty项目的ThirdPartyController类的getComponentAccessToken方法
+```
+接口请求方式: https协议 POST
+接口地址:https://api.weixin.qq.com/cgi-bin/component/api_component_token
+请求参数：
+{
+"component_appid":"appid_value" ,
+"component_appsecret": "appsecret_value",
+"component_verify_ticket": "ticket_value"
+}
+```
+
+
+
+### 获取预授权码pre_auth_code(对应上述第二步)
+```
+接口请求方式：https协议 POST
+接口地址:https://api.weixin.qq.com/cgi-bin/component/api_create_preauthcode?component_access_token=xxx
+请求参数：
+{
+"component_appid":"appid_value"  第三方平台appid
+}
+```
+
+### 跳转到指定授权页
+详见ThirdParty项目的ThirdPartyController类的redirectAuthPage方法
+```
+接口请求方式：https协议 GET
+接口地址:https://mp.weixin.qq.com/cgi-bin/componentloginpage?
+component_appid=xxxx&pre_auth_code=xxxxx&redirect_uri=xxxx&auth_type=xxx。
+```
+请求参数:
+字段 | 是否必填 | 含义   
+- | :-: | -: 
+component_appid | 是| 第三方平台方appid
+pre_auth_code | 是| 预授权码
+redirect_uri | 是 | 回调URI
+ auth_type| 否 | 要授权的帐号类型， 1则商户扫码后，手机端仅展示公众号、2表示仅展示小程序，  3表示公众号和小程序都展示。 如果为未制定，则默认小程序和公众号都展示。第三方平台开发者可以使用本字段来控制授权的帐号类型。
+biz_appid | 否 | 指定授权唯一的小程序或公众号
+
+### 使用授权码换取公众号或小程序的接口调用凭据和授权信息
+详见ThirdParty项目的ThirdPartyController类的queryAuth方法
+```
+接口请求方式：https协议 POST
+接口地址:https://api.weixin.qq.com/cgi-bin/component/api_query_auth?component_access_token=xxxx
+请求参数：
+{
+"component_appid":"appid_value" ,  第三方平台appid
+"authorization_code": "auth_code_value" 授权code
+}
+
+返回参数：
+{
+"authorization_info": {
+"authorizer_appid": "wxf8b4f85f3a794e77",
+"authorizer_access_token": "QXjUqNqfYVH0yBE1iI_7vuN_9gQbpjfK7hYwJ3P7xOa88a89-Aga5x1NMYJyB8G2yKt1KCl0nPC3W9GJzw0Zzq_dBxc8pxIGUNi_bFes0qM",
+"expires_in": 7200,
+"authorizer_refresh_token": "dTo-YCXPL4llX-u1W1pPpnp8Hgm4wpJtlR6iV0doKdY",
+"func_info": [
+{
+"funcscope_category": {
+"id": 1
+}
+},
+{
+"funcscope_category": {
+"id": 2
+}
+},
+{
+"funcscope_category": {
+"id": 3
+}
+}
+]
+}}
+```
+### 刷新令牌：见微信文档
+
+### 获取授权用户信息
+详见ThirdParty项目的ThirdPartyServiceImpl类的setAuthorizerInfo方法
+```
+接口请求方式：https协议 POST
+接口地址:https://api.weixin.qq.com/cgi-bin/component/api_get_authorizer_info?component_access_token=xxxx
+请求参数：
+{
+"component_appid":"appid_value" ,  第三方平台appid
+"authorizer_appid": "auth_appid_value"  授权方appid
+}
+```
